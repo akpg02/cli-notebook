@@ -16,10 +16,10 @@ git clone git@github.com:akpg02/cli-notebook.git
 cd cli-notebook
 npm i
 npm test
-node src/index.js add "Buy oat mild"
+node src/index.js add "Buy oat milk"
 node src/index.js list
-node src/index.js update
-node src/index.js delete
+node src/index.js update <paste-id-here> "Buy oat milk and bread"
+node src/index.js delete <paste-id-here>
 ```
 
 - Exit with non-zero code on invalid usage:
@@ -57,5 +57,3 @@ node src/index.js delete <paste-id-here>
 - Why JSON files are used to store the notes? This mini application is simplified to focus on the JavaScript programming language. A database may be added later or in future projects.
 - Error handling is enforced for invalid note entries.
 - Unit testing has been implemented for the add, delete, update and list endpoints of this command line application.
-
-
