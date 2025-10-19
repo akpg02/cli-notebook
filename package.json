@@ -4,11 +4,16 @@
   "description": "CLI Notebook - a tiny Node.js app that saves and list notes as JSON files",
   "main": "index.js",
   "scripts": {
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "start": "node src/index.js",
+    "notes:add": "node src/index.js add",
+    "notes:list": "node src/index.js list",
+    "notes:update": "node src/index.js update",
+    "notes:delete": "node src/index.js delete"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "devDependencies": {
     "jest": "^30.2.0"
