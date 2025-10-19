@@ -3,8 +3,10 @@ const path = require("node:path");
 
 const FILE = path.join(__dirname, "..", "notes.json");
 
-async function deleteNote(id) {
-  let data;
+async function deleteNote (id) {
+  if (!id) throw new Error('id is required')
+  
+  let data =[];
   try {
     const raw = await fs.readFile(FILE, "utf-8").catch(() => "[]");
     data = JSON.parse(raw);

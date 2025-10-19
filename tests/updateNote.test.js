@@ -8,23 +8,27 @@ beforeEach(async () => {
   await fs.writeFile(FILE, "[]");
 });
 
-test("update a note", async () => {
-  await addNote("A");
-  await addNote("B");
+test("updates the text of an existing note", async () => {
+  const a = await addNote("First");
+  await addNote("Second");
 
-  let notes = await listNotes();
-  const updateId = notes[0].id;
-  await updateNote(updateId, "Hello, there");
-  notes = await listNotes();
+  const result = await updateNote(a.id, "  Updated First  ");
+  expect(result).toBeTruthy();
+  expect(result.id).toBe(a.id);
+  expect(result.text).toBe("Updated First");
 
-  expect(notes[0].text).toBe("Hello, there");
+  const notes = await listNotes();
+  const found = notes.find((n) => n.id === a.id);
+  expect(found.text).toBe("Updated First");
+  expect(found.updatedAt).toBeTruthy();
 });
 
-test("rejects empty text", async () => {
-  await addNote("A");
-  await addNote("B");
+test("returns false when updating a non-existent note", async () => {
+  const result = await updateNote("missing", "new text");
+  expect(result).toBe(false);
+});
 
-  let notes = await listNotes();
-  const updateId = notes[1].id;
-  await expect(updateNote(updateId, " ")).rejects.toThrow(/required/);
+test("throws when update text is empty", async () => {
+  const a = await addNote("keep");
+  await expect(updateNote(a.id, "   ")).rejects.toThrow(/required/i);
 });

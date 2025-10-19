@@ -47,6 +47,8 @@ npm test
 
 node src/index.js add "Buy oat milk"
 node src/index.js list
+node src/index.js update <paste-id-here> "Buy oat milk and bread"
+node src/index.js delete <paste-id-here>
 
 ```
 
@@ -56,6 +58,4 @@ node src/index.js list
 - Error handling is enforced for invalid note entries.
 - Unit testing has been implemented for the add, delete, update and list endpoints of this command line application.
 
-```
 
-```
