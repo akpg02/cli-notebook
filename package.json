@@ -2,7 +2,7 @@
   "name": "notebook",
   "version": "1.0.0",
   "description": "CLI Notebook - a tiny Node.js app that saves and list notes as JSON files",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "jest --runInBand",
     "start": "node src/index.js",
